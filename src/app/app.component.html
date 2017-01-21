@@ -1,3 +1,20 @@
-<h1>
-  {{title}}
-</h1>
+<section class="userapp">
+  <header class="header">
+    <h1>Users</h1>
+    <input class="new-user" placeholder="Input user name here" autofocus="" [(ngModel)]="newUser.name" (keyup.enter)="addUser()">
+  </header>
+  <section class="main" *ngIf="users.length > 0">
+    <ul class="user-list">
+      <li *ngFor="let user of users" [class.enabled]="user.enabled">
+        <div class="view">
+          <input class="toggle" type="checkbox" (click)="toggleUserEnabled(user)" [checked]="user.enabled">
+          <label>{{user.name}}</label>
+          <button class="destroy" (click)="removeUser(user)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <footer class="footer" *ngIf="users.length > 0">
+    <span class="user-count"><strong>{{users.length}}</strong> {{users.length == 1 ? 'item' : 'items'}} left</span>
+  </footer>
+</section>
