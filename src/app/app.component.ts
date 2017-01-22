@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {UserDataService} from "./service/user-data.service";
 import {User} from "./model/user";
+//import {UserRestService} from "./service/user-rest.service";
 
 @Component({
   selector: 'app-root',
@@ -36,8 +37,9 @@ export class AppComponent {
     this.userDataService.deleteUserById(user.id);
   }
 
-  get users() {
+  getUsers() {
     return this.userDataService.getAllUsers();
+    //return this.userRestService.getAllUsers();
   }
 
 }
